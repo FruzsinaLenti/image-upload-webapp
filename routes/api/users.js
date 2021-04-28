@@ -55,7 +55,6 @@ router.post("/register", (req, res) => {
 // @access Public
 router.post("/login", (req, res) => {
 	// Form validation
-
 	const { errors, isValid } = validateLoginInput(req.body);
 
 	// Check validation
@@ -80,7 +79,8 @@ router.post("/login", (req, res) => {
 				// Create JWT Payload
 				const payload = {
 					id: user.id,
-					name: user.name
+					name: user.name,
+					images: user.images
 				};
 
 				// Sign token
@@ -103,6 +103,48 @@ router.post("/login", (req, res) => {
 					.json({ passwordincorrect: "Password incorrect" });
 			}
 		});
+	});
+});
+
+
+router.get('/users', function (req, res) {
+	User.find({}, function(err, users) {
+    var userMap = {};
+
+    users.forEach(function(user) {
+      userMap[user._id] = user;
+    });
+
+    res.send(userMap);  
+  });
+})
+
+router.get('/user', function (req, res) {
+	const id = req.body.id;
+	console.log(req, 'req')
+
+	User.findOne({ id: id }).then((err, user) => {
+		if (!user) {
+			return res.status(404).json({ emailnotfound: "Email not found" });
+		}
+		console.log(user, 'usrr')
+    res.send(user);  
+
+  });
+})
+
+router.post("/upload-image", (req, res) => {
+	User.findOne({ email: req.body.email }).then(user => {
+		if (user) {
+
+			const newUserImage = new User({
+				images: req.body.images.push(images),
+			});
+			newUserImage
+			.save()
+			.then(user => res.json(user))
+			.catch(err => console.log(err));
+		}
 	});
 });
 

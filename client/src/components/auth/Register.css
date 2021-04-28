@@ -1,23 +1,6 @@
 .returnHome {
 	margin-top: 10px;
 }
-/* 
-.registerText {
-	color: white;
-}
-
-.link {
-	color: #e84a5f;
-}
-
-.link:hover {
-	color: #e84a5f;
-	text-decoration: underline;
-}
-
-label {
-	color: #e84a5f;
-} */
 
 .form-control {
 	margin-bottom: 10px;
@@ -25,12 +8,9 @@ label {
 
 .signupbtn {
 	margin: 10px;
-	background-color: #e84a5f;
-	color: white;
 }
 
 .signupbtn:hover {
-	background-color: white;
-	color: #e84a5f;
-	border: 1px solid #e84a5f;
+	color: coral;
+	border: 1px solid coral;
 }

@@ -17,7 +17,19 @@ const UserSchema = new Schema({
 	date: {
 		type: Date,
 		default: Date.now
+	},
+	images: [{
+		url: {
+			type: String,
+			data: Buffer,
+			required: false,
+			default: 'https://picsum.photos/id/1/200/300'
+		},
+		name: {
+			type: String,
+		}
 	}
+],
 });
 
 module.exports = User = mongoose.model("users", UserSchema);

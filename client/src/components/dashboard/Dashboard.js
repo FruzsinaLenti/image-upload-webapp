@@ -6,16 +6,16 @@ import Button from '@material-ui/core/Button';
 import ImageUpload from './ImageUpload'
 import './style.css';
 
+
 class Dashboard extends Component {
 	onLogoutClick = e => {
 		e.preventDefault();
 		this.props.logoutUser();
 	};
 
-
-
 	render() {
 		const { user } = this.props.auth;
+
 
 		return (
 			<div className="container">

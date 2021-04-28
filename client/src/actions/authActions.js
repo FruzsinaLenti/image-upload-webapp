@@ -63,3 +63,24 @@ export const logoutUser = () => dispatch => {
 	// Set current user to empty object {} which will set isAuthenticated to false
 	dispatch(setCurrentUser({}));
 };
+
+export const uploadImage = (file, onUploadProgress) => dispatch => {
+  let formData = new FormData();
+
+  formData.append("file", file);
+
+	axios
+		.post("/api/users/upload-image", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      onUploadProgress,
+    })
+		.catch(err =>
+			dispatch({
+				type: GET_ERRORS,
+				payload: err.response.data
+			})
+		);
+};
+

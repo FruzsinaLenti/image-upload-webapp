@@ -3,13 +3,9 @@
 }
 
 .logoutbtn {
-	border: 1px solid coral;
-	color: coral;
-
+	border: 1px solid;
 }
 
 .logoutbtn:hover {
-	background-color: white;
 	border: 1px solid;
-
 }
