@@ -129,25 +129,9 @@ router.get('/user', function (req, res) {
 		if (!user) {
 			return res.status(404).json({ emailnotfound: "Email not found" });
 		}
-		console.log(user, 'usrr')
     res.send(user);  
 
   });
 })
-
-
-router.post("/upload-image", (req, res) => {
-	User.findOne({ _id: req.body.id }, (err, user) => {
-		const mockImage = { url: 'https://picsum.photos/id/1/200/300'}
-
-	  user.images = user.images.push(mockImage);
-	  // user.images = user.images.push(req.body.image);
-
-		user.save()
-		.then(user => res.json(user))
-		.catch(err => console.log(err));
-	 });
-
-});
 
 module.exports = router;

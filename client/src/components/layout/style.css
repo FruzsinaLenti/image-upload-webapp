@@ -1,5 +1,7 @@
 .jumbotron {
 	margin-top: 125px;
+	background-color: white;
+	border: 1px solid;
 }
 
 .registerButton {
@@ -20,5 +22,4 @@
 .loginButton:hover {
 	border: 1px solid coral;
 	color: coral;
-
 }

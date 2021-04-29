@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { uploadImage } from "../../actions/authActions";
+import { uploadImage, getFiles } from "../../actions/authActions";
 
 class ImageUpload extends Component {
   constructor(props) {
@@ -40,26 +40,28 @@ class ImageUpload extends Component {
     });
 
 
-    this.props.uploadImage(this.props.auth.user)
-    // this.props.uploadImage(this.state.currentFile, (event) => {
-    //   this.setState({
-    //     progress: Math.round((100 * event.loaded) / event.total),
-    //   });
-    // }).then((response) => {
-    //     this.setState({
-    //       message: response.data.message,
-    //     });
-    //   }).then((files) => {
-    //     this.setState({
-    //       imageInfos: files.data,
-    //     });
-    //   }).catch((err) => {
-    //     this.setState({
-    //       progress: 0,
-    //       message: "Could not upload the image!",
-    //       currentFile: undefined,
-    //     });
-    //   });
+    this.props.uploadImage(this.state.currentFile, (event) => {
+      this.setState({
+        progress: Math.round((100 * event.loaded) / event.total),
+      });
+    })
+    .then((response) => {
+        this.setState({
+          message: response.data.message,
+        });
+        // return this.props.getFiles();
+      })
+      .then((files) => {
+        this.setState({
+          imageInfos: files.data,
+        });
+      }).catch((err) => {
+        this.setState({
+          progress: 0,
+          message: "Could not upload the image!",
+          currentFile: undefined,
+        });
+      });
   }
 
   render() {
@@ -82,7 +84,7 @@ class ImageUpload extends Component {
 
           <div className="col-4">
             <button
-              className="btn btn-success btn-sm"
+              className="btn registerButton"
               disabled={!currentFile}
               onClick={this.upload}
             >
@@ -136,10 +138,11 @@ class ImageUpload extends Component {
 
 ImageUpload.propTypes = {
 	uploadImage: PropTypes.func.isRequired,
+  getFiles: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
 	auth: state.auth
 });
 
-export default connect(mapStateToProps, { uploadImage })(ImageUpload);
+export default connect(mapStateToProps, { uploadImage, getFiles })(ImageUpload);
