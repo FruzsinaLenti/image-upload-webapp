@@ -107,6 +107,9 @@ router.post("/login", (req, res) => {
 });
 
 
+// @route POST api/users/users
+// @desc 
+// @access Public
 router.get('/users', function (req, res) {
 	User.find({}, function(err, users) {
     var userMap = {};
@@ -121,7 +124,6 @@ router.get('/users', function (req, res) {
 
 router.get('/user', function (req, res) {
 	const id = req.body.id;
-	console.log(req, 'req')
 
 	User.findOne({ id: id }).then((err, user) => {
 		if (!user) {
@@ -133,19 +135,19 @@ router.get('/user', function (req, res) {
   });
 })
 
-router.post("/upload-image", (req, res) => {
-	User.findOne({ email: req.body.email }).then(user => {
-		if (user) {
 
-			const newUserImage = new User({
-				images: req.body.images.push(images),
-			});
-			newUserImage
-			.save()
-			.then(user => res.json(user))
-			.catch(err => console.log(err));
-		}
-	});
+router.post("/upload-image", (req, res) => {
+	User.findOne({ _id: req.body.id }, (err, user) => {
+		const mockImage = { url: 'https://picsum.photos/id/1/200/300'}
+
+	  user.images = user.images.push(mockImage);
+	  // user.images = user.images.push(req.body.image);
+
+		user.save()
+		.then(user => res.json(user))
+		.catch(err => console.log(err));
+	 });
+
 });
 
 module.exports = router;

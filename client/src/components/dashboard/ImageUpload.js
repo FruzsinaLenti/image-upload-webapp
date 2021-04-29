@@ -39,25 +39,27 @@ class ImageUpload extends Component {
       progress: 0,
     });
 
-    this.props.uploadImage(this.state.currentFile, (event) => {
-      this.setState({
-        progress: Math.round((100 * event.loaded) / event.total),
-      });
-    }).then((response) => {
-        this.setState({
-          message: response.data.message,
-        });
-      }).then((files) => {
-        this.setState({
-          imageInfos: files.data,
-        });
-      }).catch((err) => {
-        this.setState({
-          progress: 0,
-          message: "Could not upload the image!",
-          currentFile: undefined,
-        });
-      });
+
+    this.props.uploadImage(this.props.auth.user)
+    // this.props.uploadImage(this.state.currentFile, (event) => {
+    //   this.setState({
+    //     progress: Math.round((100 * event.loaded) / event.total),
+    //   });
+    // }).then((response) => {
+    //     this.setState({
+    //       message: response.data.message,
+    //     });
+    //   }).then((files) => {
+    //     this.setState({
+    //       imageInfos: files.data,
+    //     });
+    //   }).catch((err) => {
+    //     this.setState({
+    //       progress: 0,
+    //       message: "Could not upload the image!",
+    //       currentFile: undefined,
+    //     });
+    //   });
   }
 
   render() {
