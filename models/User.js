@@ -23,7 +23,6 @@ const UserSchema = new Schema({
 			type: String,
 			data: Buffer,
 			required: false,
-			default: 'https://picsum.photos/id/1/200/300'
 		},
 		name: {
 			type: String,

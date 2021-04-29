@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { uploadImage } from "../../actions/authActions";
+import { uploadImage, getFiles } from "../../actions/authActions";
 
 class ImageUpload extends Component {
   constructor(props) {
@@ -44,11 +44,14 @@ class ImageUpload extends Component {
       this.setState({
         progress: Math.round((100 * event.loaded) / event.total),
       });
-    }).then((response) => {
+    })
+    .then((response) => {
         this.setState({
           message: response.data.message,
         });
-      }).then((files) => {
+        // return this.props.getFiles();
+      })
+      .then((files) => {
         this.setState({
           imageInfos: files.data,
         });
@@ -135,10 +138,11 @@ class ImageUpload extends Component {
 
 ImageUpload.propTypes = {
 	uploadImage: PropTypes.func.isRequired,
+  getFiles: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
 	auth: state.auth
 });
 
-export default connect(mapStateToProps, { uploadImage })(ImageUpload);
+export default connect(mapStateToProps, { uploadImage, getFiles })(ImageUpload);
