@@ -64,32 +64,29 @@ export const logoutUser = () => dispatch => {
 	dispatch(setCurrentUser({}));
 };
 
-export const uploadImage = (userData) => dispatch => {
-  // let formData = new FormData();
+export const uploadImage = (file, onUploadProgress) => dispatch => {
+	let formData = new FormData();
 
-  // formData.append("file", file);
+	formData.append("file", file);
 
-	axios
-		.post("/api/users/upload-image", userData)
-		.then(res => console.log(res, 'res'))
-		.catch(err =>
-			dispatch({
-				type: GET_ERRORS,
-				payload: err.response.data
-			})
-		);
-	// axios
-	// 	.post("/api/users/upload-image", formData, {
-  //     headers: {
-  //       "Content-Type": "multipart/form-data",
-  //     },
-  //     onUploadProgress,
-  //   })
-	// 	.catch(err =>
-	// 		dispatch({
-	// 			type: GET_ERRORS,
-	// 			payload: err.response.data
-	// 		})
-	// 	);
-};
+	axios.post("/api/files/upload", formData, {
+		headers: {
+			"Content-Type": "multipart/form-data",
+		},
+		onUploadProgress,
+	})
+	.then(res => console.log(res))
+	.catch(err =>
+		dispatch({
+			type: GET_ERRORS,
+			payload: err.response.data
+		})
+	);
+
+
+}
+
+export const getFiles = () => {
+	return axios.get("/api/files/files");
+}
 

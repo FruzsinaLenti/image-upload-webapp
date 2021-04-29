@@ -4,11 +4,21 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
 const users = require('./routes/api/users');
+const files = require('./routes/api/files');
 const app = express();
 require('dotenv').config();
 require('./config/keys');
+const cors = require("cors");
 
 const port = process.env.PORT || 3001;
+
+global.__basedir = __dirname;
+
+var corsOptions = {
+  origin: "http://localhost:8081"
+};
+
+app.use(cors(corsOptions));
 
 // Bodyparser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,6 +41,7 @@ require('./config/passport')(passport);
 
 // Routes
 app.use('/api/users', users);
+app.use('/api/files', files);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
