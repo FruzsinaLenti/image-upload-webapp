@@ -82,7 +82,7 @@ class ImageUpload extends Component {
 
           <div className="col-4">
             <button
-              className="btn btn-success btn-sm"
+              className="btn registerButton"
               disabled={!currentFile}
               onClick={this.upload}
             >

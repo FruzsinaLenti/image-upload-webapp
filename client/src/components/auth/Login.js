@@ -53,7 +53,7 @@ class Login extends Component {
 			<div className="container">
 				<div className="row">
 					<div className="col-sm-3 returnHome">
-						<Link to="/" className="link"><i class="fas fa-backspace"></i> Return Home</Link>
+						<Link to="/" className="btn registerButton"><i class="fas fa-backspace"></i> Return</Link>
 					</div>
 				</div>
 
@@ -103,7 +103,7 @@ class Login extends Component {
 
 							{/* Submit button */}
 							<div className="col-8 offset-2">
-								<button className="btn loginbtn" type="submit">
+								<button className="btn signupbtn" type="submit">
 									Log In
 			 	  				</button>
 							</div>

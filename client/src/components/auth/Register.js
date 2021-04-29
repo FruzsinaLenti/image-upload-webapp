@@ -56,7 +56,7 @@ class Register extends Component {
 			<div className="container">
 				<div className="row">
 					<div className="col-sm-3 returnHome">
-						<Link to="/" className="link"><i class="fas fa-backspace"></i> Return Home</Link>
+						<Link to="/" className="btn registerButton"><i class="fas fa-backspace"></i> Return</Link>
 					</div>
 				</div>
 
@@ -70,7 +70,6 @@ class Register extends Component {
 				<div className="row">
 					<div className="col-10 offset-1 text-center">
 						<form noValidate onSubmit={this.onSubmit}>
-							{/* Name */}
 							<div className="col-8 offset-2">
 								<label htmlFor="name">Name:</label>
 								<span className="text-light">{errors.name}</span>
@@ -85,7 +84,6 @@ class Register extends Component {
 								/>
 							</div>
 
-							{/* Email */}
 							<div className="col-8 offset-2">
 								<label htmlFor="email">Email:</label>
 								<span className="text-light">{errors.email}</span>
@@ -100,7 +98,6 @@ class Register extends Component {
 								/>
 							</div>
 
-							{/* Password */}
 							<div className="col-8 offset-2">
 								<label htmlFor="password">Password:</label>
 								<span className="text-light">{errors.password}</span>
@@ -115,7 +112,6 @@ class Register extends Component {
 								/>
 							</div>
 
-							{/* Validate password */}
 							<div className="col-8 offset-2">
 								<label htmlFor="password2">Confirm Password:</label>
 								<span className="text-light">{errors.password2}</span>
@@ -130,11 +126,8 @@ class Register extends Component {
 								/>
 							</div>
 
-							{/* Submit button */}
 							<div className="col-8 offset-2">
-								<button className="btn signupbtn" type="submit">
-									Sign up
-			 	  				</button>
+								<button className="btn signupbtn" type="submit">Sign up</button>
 							</div>
 						</form>
 					</div>

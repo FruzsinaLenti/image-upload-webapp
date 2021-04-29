@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import Button from '@material-ui/core/Button';
 import ImageUpload from './ImageUpload'
 import './style.css';
 
@@ -16,13 +15,12 @@ class Dashboard extends Component {
 	render() {
 		const { user } = this.props.auth;
 
-
 		return (
 			<div className="container">
 				<div className="row">
+					<button onClick={this.onLogoutClick} className="btn registerButton">Logout</button>
 					<div className="col-sm-12 text-center dashboardText">
 						<h3>Hey there, {user.name.split(" ")[0]}</h3>
-						<Button onClick={this.onLogoutClick} className="btn logoutbtn">Logout</Button>
 						<ImageUpload />
 					</div>
 				</div>
