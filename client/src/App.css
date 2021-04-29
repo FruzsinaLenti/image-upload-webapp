@@ -1,6 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Gelasio&display=swap');
 
 body {
-	background-color: #2a363b;
-	font-family: 'Gelasio', serif;
+	background-color: white;
+	color: black;
+}
+
+
+.loginText {
+	color: black;
+}
+
+.link {
+	color: coral;
+}
+
+.link:hover {
+	color: coral;
+	text-decoration: underline;
+}
+
+label {
+	color: coral;
 }

@@ -1,33 +1,24 @@
 .jumbotron {
-	background-color: #2a363b;
-	border: 3px solid #e84a5f;
 	margin-top: 125px;
-	color: white;
-	font-style: italic;
 }
 
 .registerButton {
-	background-color: #2a363b;
-	border: 1px solid #e84a5f;
-	color: white;
+	border: 1px solid;
 	margin: 5px;
 }
 
 .registerButton:hover {
-	background-color: white;
-	color:#e84a5f;
-	border: 1px solid #e84a5f;
+	color: coral;
+	border: 1px solid coral;
 }
 
 .loginButton {
-	background-color: #2a363b;
-	border: 1px solid #e84a5f;
-	color: white;
+	border: 1px solid;
 	margin: 5px;
 }
 
 .loginButton:hover {
-	background-color: white;
-	color:#e84a5f;
-	border: 1px solid #e84a5f;
+	border: 1px solid coral;
+	color: coral;
+
 }
